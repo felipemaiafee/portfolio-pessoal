@@ -1,0 +1,676 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  /* garante que o fundo seja todo preto */
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ====== SIDEBAR ====== */
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 90px;
+  /* só ícones */
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.8);
+  border-right: 1px solid #111;
+  z-index: 1000;
+}
+
+.logo-nav {
+  margin-bottom: 3rem;
+}
+
+.logo-nav img {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+#lista-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  align-items: center;
+}
+
+/* Ícones do menu */
+.nav-item {
+  color: #fff;
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.8;
+  stroke: #bbb;
+  transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover svg {
+  stroke: white;
+  transform: scale(1.15);
+}
+
+/* ===== TOOLTIP ===== */
+.nav-item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(15px);
+  background: #111;
+  color: white;
+  padding: .4rem .7rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.nav-item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(20px);
+}
+
+/* ====== MAIN AJUSTE ====== */
+main {
+  margin-left: 90px;
+  /* espaço do menu */
+  padding: 2rem;
+}
+
+/* ====== SESSÃO INÍCIO ====== */
+#inicio {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  width: fit-content;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.subtitulo-apresentacao {
+  font-size: 35px;
+  font-weight: 200;
+  line-height: 1;
+  text-align: left;
+}
+
+.titulo-apresentacao {
+  font-size: 100px;
+  font-weight: bolder;
+  line-height: 1;
+}
+
+.cargo-apresentacao {
+  font-size: 35px;
+  font-weight: 200;
+  letter-spacing: 9px;
+  line-height: 1;
+}
+
+/* ====== BOTÕES ====== */
+.botoes-apresentacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.botoes-apresentacao .botao {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  padding: .8rem 1.2rem;
+  border: 1px solid rgba(3, 2, 2, 0.5);
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 300;
+  margin-top: 30px;
+  background-color: #000;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.botoes-apresentacao .botao:hover,
+.botoes-apresentacao .botao:focus-visible {
+  border-color: #fff;
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, .45),
+    0 0 12px rgba(255, 255, 255, .35);
+  outline: none;
+}
+
+.botoes-apresentacao .botao svg {
+  width: 20px;
+  height: 20px;
+}
+
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: black;
+  color: #fff;
+}
+
+.about-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  align-items: center;
+}
+
+.about-image img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid white;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+#tools,
+#tech {
+  padding: 4rem 2rem;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.skill-card {
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.skill-card p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== SEÇÃO PROJETOS ===== */
+#projects {
+  padding: 4rem 2rem;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+#projects .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3.5rem;
+}
+
+/* Card com imagem no fundo */
+.project-card {
+  position: relative;
+  width: 450px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid #fff;
+  transition: transform 0.3s ease;
+}
+
+/* Efeito hover no card */
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Nome do projeto - tooltip superior */
+.project-card::before {
+  content: attr(data-title);
+  position: absolute;
+  top: -40px;
+  /* começa fora do card */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+.project-card:hover::before {
+  top: 10px;
+  /* posição final */
+  opacity: 1;
+}
+
+/* Overlay de botões */
+.project-buttons {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+/* Botões individuais */
+.btn-project {
+  position: relative;
+  padding: 0.6rem;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-project svg {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-project:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Tooltip dos botões */
+.btn-project::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 3.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.btn-project:hover::after {
+  opacity: 1;
+  z-index: 999;
+}
+
+#contact {
+  padding: 5rem 2rem;
+  background: black;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+#contact .section-title {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Container */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Formulário com placeholders animados */
+.contact-form {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 1rem 1rem 1rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #111;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #aaa;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label,
+.input-group textarea:focus+label,
+.input-group textarea:not(:placeholder-shown)+label {
+  top: -10px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.contact-form button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #ddd;
+}
+
+/* Redes sociais sofisticadas */
+.contact-info {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.social-links a svg {
+  width: 36px;
+  height: 36px;
+  transition: all 0.3s ease;
+  fill: #fff;
+}
+
+.social-links a:hover svg {
+  transform: scale(1.15);
+}
+
+/* Tooltip */
+.social-links a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* ============================= */
+/* RESPONSIVIDADE                */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  main {
+    margin-left: 70px;
+    /* sidebar um pouco mais estreita */
+    padding: 1.5rem;
+  }
+
+  #sidebar {
+    width: 70px;
+  }
+
+  .logo-nav img {
+    width: 45px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+
+  /* Sidebar vira barra inferior */
+  #sidebar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem;
+    border-right: none;
+    border-top: 1px solid #111;
+  }
+
+  .logo-nav {
+    display: none;
+    /* tira logo pra economizar espaço */
+  }
+
+  #lista-nav {
+    flex-direction: row;
+    gap: 1rem;
+    width: auto;
+  }
+
+  main {
+    margin-left: 0;
+    /* sem espaço lateral */
+    margin-bottom: 70px;
+    /* espaço pro menu em baixo */
+    padding: 1rem;
+  }
+
+  /* Ajusta seções */
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image img {
+    max-width: 180px;
+    margin-bottom: 1rem;
+  }
+
+  .skills-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .skill-card {
+    flex: 1 1 120px;
+    max-width: 150px;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+}
+
+/* Telas bem pequenas */
+@media (max-width: 480px) {
+  .titulo-apresentacao {
+    font-size: 1.8rem;
+  }
+
+  .cargo-apresentacao {
+    font-size: 1rem;
+  }
+
+  .botoes-apresentacao {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .botao {
+    width: 100%;
+    text-align: center;
+  }
+}
